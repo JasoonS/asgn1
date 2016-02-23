@@ -3,10 +3,19 @@
 */
 #include "database.h"
 
-void SMYJAS002::add_student(std::string name){
+SMYJAS002::StudentRecord SMYJAS002::make_record(std::string name, std::string surname, std::string studentNum, std::string classRec)
+{
+      StudentRecord ret;
+      ret.Name = name;
+      ret.Surname = surname;
+      ret.StudentNumber = studentNum;
+      ret.ClassRecord = classRec;
+      return ret;
+}
 
-    RecordsCollection.push_back(StudentRecord());
-    RecordsCollection.back().Name = name;
+
+void SMYJAS002::add_student(std::string name){
+    RecordsCollection.push_back(make_record(name, "bla", "blab", "blabla"));
     std::cout << "the inserted name was: " << RecordsCollection.back().Name << std::endl;
 }
 
@@ -19,7 +28,10 @@ void SMYJAS002::save_student() {
 };
 
 void SMYJAS002::display_data() {
-  std::cout << "reading database" << std::endl;
+  std::cout << "displaying data" << std::endl;
+  for (StudentRecord i : RecordsCollection) {
+      std::cout << i.Name;
+  }
 };
 
 void SMYJAS002::grade_student() {

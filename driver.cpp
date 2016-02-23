@@ -31,26 +31,18 @@ int main() {
 
     cout << "your selection was: " << selection << endl;
 
-    std::string name;
-    std::string price;
-    std::string mystr;
-    std::string s;
+    string name;
+    string surname;
+    string studentNum;
+    string classRecord;
+
     switch(selection){
     case 1 :
-      // cin >> name;
-      // cout << "tried to get the whole line: " << name << endl;
-    // if ( selection == 1 ) {
-      // std::cout << "Enter string:" << flush;
-      // std::getline(std::cin, name);
-      std::cout << "Enter string:";
+      std::cout << "Enter your first name(s):";
       cin.get();
-      std::getline(std::cin, s);
-      // std::getline(std::cin, s);
-      std::cout << "the string was: " << s << std::endl << flush;
-      // std::cout << "the string was: " << name << std::endl;
-      std::cout << "!!!!!!!!!!!!!!!!!!------------!!!!!!!!!!!!!!!!!" << std::endl;
-      add_student("jason");
-    // }
+      getline(cin, name);
+      std::cout << "the string was: " << name << endl;
+      add_student(name);
       break;
     case 2 :
       read_database();

@@ -18,6 +18,8 @@ namespace SMYJAS002 {
 
   std::vector<StudentRecord> RecordsCollection;
 
+  StudentRecord make_record(std::string name, std::string surname, std::string studentNum, std::string classRec);
+
   void add_student(std::string name);
 
   void read_database();
