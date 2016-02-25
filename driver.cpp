@@ -38,17 +38,23 @@ int main() {
 
     switch(selection){
     case 1 :
-      std::cout << "Enter your first name(s):";
+      std::cout << "Enter student's first name(s):";
       cin.get();
       getline(cin, name);
-      std::cout << "the string was: " << name << endl;
-      add_student(name);
+      std::cout << "Enter student's your surname:";
+      getline(cin, surname);
+      std::cout << "Enter student's student number:";
+      getline(cin, studentNum);
+      std::cout << "Enter student's class record:";
+      getline(cin, classRecord);
+      std::cout << "you SAVED:" <<name << studentNum <<classRecord<< std::endl;
+      add_student(name, surname, studentNum, classRecord);
       break;
     case 2 :
       read_database();
       break;
     case 3 :
-       save_student();
+       save_database();
        break;
     case 4 :
       display_data();

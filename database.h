@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <iostream>
+#include <fstream>
 
 namespace SMYJAS002 {
 
@@ -20,11 +21,11 @@ namespace SMYJAS002 {
 
   StudentRecord make_record(std::string name, std::string surname, std::string studentNum, std::string classRec);
 
-  void add_student(std::string name);
+  void add_student(std::string name, std::string surname, std::string studentNum, std::string classRec);
 
   void read_database();
 
-  void save_student();
+  void save_database();
 
   void display_data();
 

@@ -29,3 +29,6 @@
 
 # The compiled executable
 driver
+
+# the created database
+*.csv
