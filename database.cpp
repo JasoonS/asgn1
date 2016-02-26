@@ -6,6 +6,9 @@
 
 namespace SMYJAS002 {
 	using namespace std;
+	
+	vector<StudentRecord> RecordsCollection;
+	
 	StudentRecord make_record(std::string name, std::string surname, std::string studentNum, std::string classRec)
 	{
 		  StudentRecord ret;
@@ -19,7 +22,6 @@ namespace SMYJAS002 {
 
 
 	void add_student(std::string name, std::string surname, std::string studentNum, std::string classRec){
-		// Convert the student number to lowwer case as standard.
 		transform(studentNum.begin(), studentNum.end(), studentNum.begin(), ::tolower);
 		
 		RecordsCollection.push_back(make_record(name, surname, studentNum, classRec));
@@ -30,10 +32,7 @@ namespace SMYJAS002 {
 		
 		fs.open ("database.csv", std::fstream::in);
 		string student;
-		
-		//~ getline(fs, student);
-		
-		//~ cout << "boolean value of while" << (!fs.eof())
+
 		RecordsCollection.clear();
 		while (getline(fs, student)) {
 			StudentRecord record;
@@ -46,15 +45,10 @@ namespace SMYJAS002 {
 			
 			RecordsCollection.push_back(record);
 			
-			//~ while (getline(ss, studentDetail, ',')) {
-				//~ cout << "~~ " << studentDetail << "~~" <<endl;
-			//~ }
-			cout << "Student, added: " << student << endl;
+			cout << "Student added: " << student << endl;
 		}
 		
 		cout << student << endl;
-		
-	  std::cout << "reading database" << std::endl;
 	};
 
 	void save_database() {
@@ -64,7 +58,6 @@ namespace SMYJAS002 {
 		
 	  fs.open ("database.csv", fstream::out | fstream::trunc);
 
-	  //~ fs << "First Name,Surname,Student Number,Class Record" << endl;
 	  for (StudentRecord i : RecordsCollection) {
 		  fs << i.Name << "," << i.Surname << "," << i.StudentNumber << "," << i.ClassRecord << std::endl;
 	  }
@@ -73,18 +66,14 @@ namespace SMYJAS002 {
 	};
 
 	void display_data(string studentNumber) {
-	  std::cout << "Records in database" << std::endl;
 	  StudentRecord student = RecordsCollection[find_student(studentNumber)];
-	  //~ for (StudentRecord i : RecordsCollection) {
-		  cout << "Name:           " << student.Name << endl;
-		  cout << "Surname:        " << student.Surname << endl;
-		  cout << "Student Number: " << student.StudentNumber << endl;
-		  cout << "Student Record: " << student.ClassRecord << endl;
-	  //~ }
+	  cout << "Name:           " << student.Name << endl;
+	  cout << "Surname:        " << student.Surname << endl;
+	  cout << "Student Number: " << student.StudentNumber << endl;
+	  cout << "Student Record: " << student.ClassRecord << endl;
 	};
 
 	void grade_student(string studentNumber) {
-	  std::cout << "reading database" << std::endl;
 	  StudentRecord student = RecordsCollection[find_student(studentNumber)];
 	  
 	  istringstream ss(student.ClassRecord);
@@ -92,7 +81,6 @@ namespace SMYJAS002 {
 	  int count = 0;
 	  int total = 0;
 	  
-	  //~ ss >> itemCal>> ws;
 		while (!ss.eof()) {
 			count++;
 			ss >> grade >> ws;

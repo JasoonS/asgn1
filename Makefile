@@ -2,9 +2,9 @@ run: driver
 	./driver
 
 driver: driver.o database.o
-	g++ -o driver driver.o -std=c++11
+	g++ -o driver driver.o database.o -std=c++11
 
-driver.o: driver.cpp
+driver.o: driver.cpp database.h
 	g++ -c -o driver.o driver.cpp -std=c++11
 
 database.o: database.cpp

@@ -4,7 +4,7 @@
 
 #include <iostream>
 // TODO: use extern, use database.h rather than *.cpp
-#include "database.cpp"
+#include "database.h"
 
 int main() {
   using namespace std;
