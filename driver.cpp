@@ -26,10 +26,19 @@ int main() {
     cout << "9) exit the program" << endl;
 
     cout << "Please select an option : ";
+    
     // TODO: add error handling if not an int
-    cin >> selection;
+    //~ cin >> selection;
+    //~ cout << "your selection was: " << (selection + 1) << endl;
 
-    cout << "your selection was: " << selection << endl;
+
+	// error checking on user input.
+	while (!(cin >> selection)) {
+		cout << "We don't have that as an option. Please, try again: ";
+		// first 'clear' the error, then 'ignore' the input.
+		cin.clear();
+		cin.ignore(10000, '\n');
+	}
 
     string name;
     string surname;
@@ -45,6 +54,11 @@ int main() {
       getline(cin, surname);
       std::cout << "Enter student's student number:";
       getline(cin, studentNum);
+      while(find_student(studentNum) != -1) {
+		cout << "That student number is already in the database. Please input correctly." << endl;
+		  std::cout << "Enter student's student number:";
+      getline(cin, studentNum);
+	}
       std::cout << "Enter student's class record:";
       getline(cin, classRecord);
       std::cout << "you SAVED:" <<name << studentNum <<classRecord<< std::endl;
@@ -57,15 +71,22 @@ int main() {
        save_database();
        break;
     case 4 :
-      display_data();
+		std::cout << "Enter student's student number:";
+		cin.get();
+		getline(cin, studentNum);
+		display_data(studentNum);
       break;
     case 5 :
-       grade_student();
+		std::cout << "Enter student's student number:";
+		cin.get();
+		getline(cin, studentNum);
+		grade_student(studentNum);
        break;
     case 9 :
       goto stoprun;
     default :
-      cout << selection << "was not a valid option, please try again" << endl;
+      cout << selection << " was not a valid option, please try again" << endl;
+      break;
     }
   }
 
@@ -74,3 +95,4 @@ int main() {
 
   return 0;
 }
+
