@@ -12,5 +12,3 @@ database.o: database.cpp
 
 clean:
 	@rm -f *.o driver database.csv
-
-	# all: driver.o driver
